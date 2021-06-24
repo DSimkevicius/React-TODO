@@ -14,6 +14,8 @@ function App() {
     getLocal();
   }, []);
 
+  
+
   useEffect(() => {
     const filterCase = () => {
       switch(status){
@@ -30,12 +32,13 @@ function App() {
       }
     }
     filterCase();
-    saveLocal();
   }, [todos, status]);
-
+  useEffect(() => {
   const saveLocal = () => {
       localStorage.setItem('todos', JSON.stringify(todos));
-  };
+  }; saveLocal();
+  }, [todos]);
+  
 const getLocal = () => {
   if(localStorage.getItem('todos') === null ){
     localStorage.setItem('todos', JSON.stringify([]));
